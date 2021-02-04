@@ -1,0 +1,12 @@
+{% extends "errors/base.html" %}
+
+{% block error_code %}404{% endblock %}
+
+{% block content %}
+    <section class="hero is-medium is-info has-text-centered">
+      <div class="hero-body">
+          {{ super() }}
+          {{ message }}
+      </div>
+    </section>
+{% endblock %}

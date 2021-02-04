@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+    News "{{ display_name }}" - {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="has-text-centered">
+            <h1 class="title mb-5 mt-2">{{ display_name }}</h1>
+        </div>
+        <section class="articles">
+            <div class="column is-8 is-offset-2">
+                {% for article in articles %}
+                    <!-- START ARTICLE -->
+                    <div class="card article mb-5">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title has-text-centered">
+                                        {{ article.title }}
+                                    </p>
+
+                                    {% if article.published %}
+                                        <div class="tags has-addons">
+                                            <span class="tag is-rounded">
+                                                {{ article.published }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="content article-body">
+                                <p>{{ clean_html(article.description) }}</p>
+
+                                <div class="has-text-right">
+                                    <a href="{{ article.link }}" target="_blank" class="button is-info">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ARTICLE -->
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

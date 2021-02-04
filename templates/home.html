@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Welcome - {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+      <div class="container">
+        <div>
+            <h1 class="title mb-5">News Channels</h1>
+        </div>
+        <div class="columns is-multiline is-centered">
+            {% for name, display_name in news_channels.items() %}
+              <div class="column is-one-third">
+                  <a href="{{ url_for('news_channel', news_name=name) }}">
+                    <article class="notification is-info">
+                        <h1 class="title is-size-4 has-text-centered">{{ display_name }}</h1>
+                    </article>
+                  </a>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+{% endblock %}
