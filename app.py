@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template
 
 from apps.feed import NEWS_CHANNELS, is_news_supported, get_articles
