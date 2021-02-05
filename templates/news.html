@@ -6,9 +6,47 @@
 
 {% block content %}
     <div class="container">
+        <!-- Searching -->
+        <div>
+            <div class="column is-8 is-offset-2">
+                <div>
+                    <form action="search" method="get">
+                        <div class="field">
+                          <div class="control">
+                            <div class="select is-fullwidth">
+                              <select name="publication">
+                                <option value="">Select Publisher</option>
+                                  {% for name, display_name in news_channels.items() %}
+                                      <option
+                                         value="{{ name }}"
+                                         {% if name == search_publication %}selected{% endif %}
+                                      >
+                                          {{ display_name }}
+                                      </option>
+                                  {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="control">
+                              <div class="buttons">
+                                  <button class="button is-primary">Search</button>
+                                  <a href="{{ url_for('search') }}" class="button is-light">
+                                      Reset
+                                  </a>
+                              </div>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="has-text-centered">
             <h1 class="title mb-5 mt-2">{{ display_name }}</h1>
         </div>
+
         <section class="articles">
             <div class="column is-8 is-offset-2">
                 {% for article in articles %}

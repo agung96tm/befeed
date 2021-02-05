@@ -1,5 +1,7 @@
 from .base import client
+from flask import request
 from apps.feed import NEWS_CHANNELS
+# from app import app
 
 
 # ---
@@ -31,3 +33,11 @@ def test_fail_404_when_channel_doesnt_exist(client):
     channel = 'wrong'
     response = client.get(f'/{channel}')
     assert response.status_code == 404
+
+
+# ---
+# Search
+# ---
+def test_success_go_to_search_page(client):
+    response = client.get(f'/search')
+    assert response.status_code == 200
