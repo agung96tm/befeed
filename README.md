@@ -4,15 +4,16 @@ Feed News Portal Indonesia
 
 ### How to run:
 1. install `pip install -r requirements.txt`
-2. run   
-   `python app.py` or   
-   `docker-compose up -d` or  
-   `gunicorn app:app`
+2. go to src folder `cd src`
+2. run
+   `python manage.py runserver` or   
+   `docker-compose up -d`
    
 
 ### How to run test:
-1. install `pip install pytest`
-2. run `pytest `
+1. install `pip install -r requirements.txt`
+2. go to src folder `cd src`
+3. run `python manage.py test`
 
 
 ### Contributes:

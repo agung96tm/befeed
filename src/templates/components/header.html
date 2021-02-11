@@ -24,7 +24,7 @@
 
             <div class="navbar-dropdown">
                 {% for name, display_name in news_channels.items() %}
-                    <a class="navbar-item" href="{{ url_for('news_channel', news_name=name) }}">
+                    <a class="navbar-item" href="{{ url_for('feed.news_channel', news_name=name) }}">
                         {{ display_name }}
                     </a>
                 {% endfor %}
