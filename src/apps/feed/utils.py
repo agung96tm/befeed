@@ -1,5 +1,5 @@
 import feedparser
-
+import re
 
 # CONSTANTS
 CNN, TEMPO, JAWA_POST, KUMPARAN = 'cnn', 'tempo', 'jawa_pos', 'kumparan'
@@ -19,11 +19,17 @@ RSS_NEWS_FEEDS = {
 }
 
 
-def is_news_supported(news):
+# functions
+def is_news_supported(news) -> object:
     """ check if news channel supported or not """
     return news in NEWS_CHANNELS.keys()
 
 
 def get_articles(channel):
-    feed_parse = feedparser.parse(RSS_NEWS_FEEDS[channel])
+    feed_parse = feedparser.parse(RSS_NEWS_FEEDS.get(channel))
     return feed_parse.get('entries', [])
+
+
+def clean_html(text: str) -> str:
+    """ remove html tag from string """
+    return re.sub(re.compile('<.*?>'), '', text)
